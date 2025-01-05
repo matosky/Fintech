@@ -1,21 +1,5 @@
 models:
   User:
-    fake:
-      _count: 2
-      name: 
-        firstName: true
-        lastName: true
-      email: email
-      accountBalance: 
-        float: [1000, 10000]
-      creditScore: 
-        int: [600, 850]
-      availableCredit: 
-        float: [1000, 50000]
-      totalSpending: 
-        int: [0, 1000]
-      createdAt: 
-        dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z]
     data:
       - id: "1"
         name: "John Doe"
@@ -75,20 +59,11 @@ models:
             amount: 50.25
             type: "credit"
             description: "Groceries"
+      - id: "cdf4"
+      - id: "d479"
+      - id: "1022"
+  
   Transaction:
-    fake:
-      _count: 10
-      id: string
-      userId: reference: User
-      date: dateTime
-      amount: 
-        float: [10, 50000]
-      type: 
-        oneOf: 
-          - "debit"
-          - "credit"
-      description: 
-        loremWords: [3, 10]
     data:
       - id: "101"
         userId: 2
@@ -150,29 +125,44 @@ models:
         amount: 6000
         type: "debit"
         description: "Loan Request: Personal"
+      - id: "1736075176871"
+        userId: 1
+        date: "2025-01-05T11:06:16.871Z"
+        amount: 8000
+        type: "debit"
+        description: "Loan Request: Home Renovation"
+      - id: "1736075279882"
+        userId: 1
+        date: "2025-01-05T11:07:59.882Z"
+        amount: 6000
+        type: "debit"
+        description: "Loan Request: Education"
+      - id: "1736075291858"
+        userId: 1
+        date: "2025-01-05T11:08:11.858Z"
+        amount: 60000
+        type: "debit"
+        description: "Loan Request: Personal"
+      - id: "1736075299897"
+        userId: 1
+        date: "2025-01-05T11:08:19.897Z"
+        amount: 60000
+        type: "debit"
+        description: "Loan Request: Education"
+      - id: "1736075445629"
+        userId: 1
+        date: "2025-01-05T11:10:45.629Z"
+        amount: 60000
+        type: "debit"
+        description: "Loan Request: Home Renovation"
+      - id: "1736078255554"
+        userId: 1
+        date: "2025-01-05T11:57:35.554Z"
+        amount: 8000
+        type: "debit"
+        description: "Loan Request: Home Renovation"
+
   Loan:
-    fake:
-      _count: 3
-      id: string
-      userId: reference: User
-      loanAmount: 
-        float: [1000, 500000]
-      tenure: 
-        int: [12, 60]
-      purpose: 
-        oneOf: 
-          - "Car Loan"
-          - "Home Renovation"
-          - "Business"
-          - "Education"
-          - "Personal"
-      status: 
-        oneOf: 
-          - "pending"
-          - "active"
-          - "paid"
-      startDate: dateTime
-      endDate: dateTime
     data:
       - id: "201"
         userId: 1
@@ -198,3 +188,115 @@ models:
         status: "paid"
         startDate: "2020-01-01"
         endDate: "2022-01-01"
+      - id: "6848"
+        userId: 1
+        loanAmount: 60000
+        tenure: 12
+        purpose: "Business"
+        status: "pending"
+        startDate: "2025-01-04T16:06:58.936Z"
+        endDate: "2026-01-04T16:06:58.936Z"
+      - id: "fdaf"
+        userId: 1
+        loanAmount: 500000
+        tenure: 24
+        purpose: "Personal"
+        status: "pending"
+        startDate: "2025-01-04T19:11:32.341Z"
+        endDate: "2027-01-04T19:11:32.341Z"
+      - id: "0d2d"
+        userId: 1
+        loanAmount: 6000
+        tenure: 12
+        purpose: "Home Renovation"
+        status: "pending"
+        startDate: "2025-01-05T09:58:51.288Z"
+        endDate: "2026-01-05T09:58:51.288Z"
+      - id: "5456"
+        userId: 1
+        loanAmount: 60005
+        tenure: 3
+        purpose: "Education"
+        status: "pending"
+        startDate: "2025-01-05T10:00:40.240Z"
+        endDate: "2025-04-05T10:00:40.240Z"
+      - id: "810f"
+        userId: 1
+        loanAmount: 6000
+        tenure: 45
+        purpose: "Business"
+        status: "pending"
+        startDate: "2025-01-05T10:43:23.630Z"
+        endDate: "2028-10-05T10:43:23.630Z"
+      - id: "fd92"
+        userId: 1
+        loanAmount: 22222
+        tenure: 12
+        purpose: "Education"
+        status: "pending"
+        startDate: "2025-01-05T11:03:29.115Z"
+        endDate: "2026-01-05T11:03:29.115Z"
+      - id: "da76"
+        userId: 1
+        loanAmount: 6000
+        tenure: 12
+        purpose: "Personal"
+        status: "pending"
+        startDate: "2025-01-05T11:06:02.739Z"
+        endDate: "2026-01-05T11:06:02.739Z"
+      - id: "6f62"
+        userId: 1
+        loanAmount: 8000
+        tenure: 24
+        purpose: "Home Renovation"
+        status: "pending"
+        startDate: "2025-01-05T11:06:16.871Z"
+        endDate: "2027-01-05T11:06:16.871Z"
+      - id: "fa80"
+        userId: 1
+        loanAmount: 6000
+        tenure: 24
+        purpose: "Education"
+        status: "pending"
+        startDate: "2025-01-05T11:07:59.882Z"
+        endDate: "2027-01-05T11:07:59.882Z"
+      - id: "4be2"
+        userId: 1
+        loanAmount: 60000
+        tenure: 12
+        purpose: "Personal"
+        status: "pending"
+        startDate: "2025-01-05T11:08:11.858Z"
+        endDate: "2026-01-05T11:08:11.858Z"
+      - id: "2289"
+        userId: 1
+        loanAmount: 60000
+        tenure: 12
+        purpose: "Education"
+        status: "pending"
+        startDate: "2025-01-05T11:08:19.897Z"
+        endDate: "2026-01-05T11:08:19.897Z"
+      - id: "9efb"
+        userId: 1
+        loanAmount: 60000
+        tenure: 12
+        purpose: "Home Renovation"
+        status: "pending"
+        startDate: "2025-01-05T11:10:45.629Z"
+        endDate: "2026-01-05T11:10:45.629Z"
+      - id: "ebfc"
+        userId: 1
+        loanAmount: 6000
+        tenure: 12
+        purpose: "Business"
+        status: "pending"
+        startDate: "2025-01-05T11:17:37.141Z"
+        endDate: "2026-01-05T11:17:37.141Z"
+      - id: "2ea1"
+        userId: 1
+        loanAmount: 8000
+        tenure: 12
+        purpose: "Home Renovation"
+        status: "pending"
+        startDate: "2025-01-05T11:57:35.554Z"
+        endDate: "2026-01-05T11:57:35.554Z"
