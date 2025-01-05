@@ -1,11 +1,7 @@
 models:
   User:
-    hasMany: 
-      - RecentTransaction
-      - Transaction
-      - Loan
     fake:
-      _count: 2  # Number of users to generate
+      _count: 2
       name: 
         firstName: true
         lastName: true
@@ -20,33 +16,70 @@ models:
         int: [0, 1000]
       createdAt: 
         dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z]
-  RecentTransaction:
-    belongsTo: 
-      - User
-    fake:
-      _count: 5  # Number of transactions to generate per user
-      id: 
-        string: true
-      userId: 
-        reference: User
-      date: dateTime
-      amount: 
-        float: [10, 50000]
-      type: 
-        oneOf: 
-          - "debit"
-          - "credit"
-      description: 
-        loremWords: [3, 10]
+    data:
+      - id: "1"
+        name: "John Doe"
+        email: "john@example.com"
+        accountBalance: 5000.75
+        creditScore: 850
+        availableCredit: 80000
+        totalSpending: 156
+        recentTransactions:
+          - id: "1736078255554"
+            userId: 1
+            date: "2025-01-05T11:57:35.554Z"
+            amount: 8000
+            type: "debit"
+            description: "Loan Request: Home Renovation"
+          - id: "1736075857141"
+            userId: 1
+            date: "2025-01-05T11:17:37.141Z"
+            amount: 6000
+            type: "debit"
+            description: "Loan Request: Business"
+          - id: "1736075445629"
+            userId: 1
+            date: "2025-01-05T11:10:45.629Z"
+            amount: 60000
+            type: "debit"
+            description: "Loan Request: Home Renovation"
+          - id: "1736075299897"
+            userId: 1
+            date: "2025-01-05T11:08:19.897Z"
+            amount: 60000
+            type: "debit"
+            description: "Loan Request: Education"
+          - id: "1736075291858"
+            userId: 1
+            date: "2025-01-05T11:08:11.858Z"
+            amount: 60000
+            type: "debit"
+            description: "Loan Request: Personal"
+      - id: "2"
+        name: "Mary James"
+        email: "mary@example.com"
+        accountBalance: 8000.75
+        creditScore: 750
+        availableCredit: 10000
+        totalSpending: 125
+        recentTransactions:
+          - id: 104
+            userId: 2
+            date: "2024-01-02"
+            amount: 50.25
+            type: "debit"
+            description: "Groceries"
+          - id: 105
+            userId: 2
+            date: "2025-01-02"
+            amount: 50.25
+            type: "credit"
+            description: "Groceries"
   Transaction:
-    belongsTo: 
-      - User
     fake:
-      _count: 10  # Number of transactions to generate
-      id: 
-        string: true
-      userId: 
-        reference: User
+      _count: 10
+      id: string
+      userId: reference: User
       date: dateTime
       amount: 
         float: [10, 50000]
@@ -56,17 +89,74 @@ models:
           - "credit"
       description: 
         loremWords: [3, 10]
+    data:
+      - id: "101"
+        userId: 2
+        date: "2021-01-01"
+        amount: 250.5
+        type: "credit"
+        description: "Salary"
+      - id: "102"
+        userId: 2
+        date: "2022-01-02"
+        amount: 50.25
+        type: "debit"
+        description: "Groceries"
+      - id: "103"
+        userId: 1
+        date: "2023-01-02"
+        amount: 50.25
+        type: "credit"
+        description: "Groceries"
+      - id: "104"
+        userId: 1
+        date: "2024-01-02"
+        amount: 50.25
+        type: "debit"
+        description: "Groceries"
+      - id: "105"
+        userId: 1
+        date: "2025-01-02"
+        amount: 50.25
+        type: "credit"
+        description: "Groceries"
+      - id: "1736071131288"
+        userId: 1
+        date: "2025-01-05T09:58:51.288Z"
+        amount: 6000
+        type: "debit"
+        description: "Loan Request: Home Renovation"
+      - id: "1736071240240"
+        userId: 1
+        date: "2025-01-05T10:00:40.240Z"
+        amount: 60005
+        type: "debit"
+        description: "Loan Request: Education"
+      - id: "1736073803629"
+        userId: 1
+        date: "2025-01-05T10:43:23.629Z"
+        amount: 6000
+        type: "debit"
+        description: "Loan Request: Business"
+      - id: "1736075009115"
+        userId: 1
+        date: "2025-01-05T11:03:29.115Z"
+        amount: 22222
+        type: "debit"
+        description: "Loan Request: Education"
+      - id: "1736075162739"
+        userId: 1
+        date: "2025-01-05T11:06:02.739Z"
+        amount: 6000
+        type: "debit"
+        description: "Loan Request: Personal"
   Loan:
-    belongsTo: 
-      - User
     fake:
-      _count: 3  # Number of loans to generate
-      id: 
-        string: true
-      userId: 
-        reference: User
+      _count: 3
+      id: string
+      userId: reference: User
       loanAmount: 
-        float: [1000, 1000000]
+        float: [1000, 500000]
       tenure: 
         int: [12, 60]
       purpose: 
@@ -83,3 +173,28 @@ models:
           - "paid"
       startDate: dateTime
       endDate: dateTime
+    data:
+      - id: "201"
+        userId: 1
+        loanAmount: 10000
+        tenure: 12
+        purpose: "Car Loan"
+        status: "active"
+        startDate: "2024-01-01"
+        endDate: "2026-01-01"
+      - id: "202"
+        userId: 1
+        loanAmount: 10000
+        tenure: 24
+        purpose: "Car Loan"
+        status: "paid"
+        startDate: "2022-01-01"
+        endDate: "2023-01-01"
+      - id: "203"
+        userId: 1
+        loanAmount: 10000
+        tenure: 24
+        purpose: "Car Loan"
+        status: "paid"
+        startDate: "2020-01-01"
+        endDate: "2022-01-01"
