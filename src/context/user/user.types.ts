@@ -8,4 +8,5 @@ export interface UserState {
   availableCredit: number;
   recentTransactions: Transaction[];
   loans: Loan[];
+  activeLoan: Loan | null;
 }

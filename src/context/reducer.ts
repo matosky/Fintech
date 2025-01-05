@@ -19,6 +19,7 @@ export const initialState: StateProps = {
     availableCredit: 0,
     recentTransactions: [],
     loans: [],
+    activeLoan: null
   },
 }
 

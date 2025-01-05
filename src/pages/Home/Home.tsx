@@ -70,7 +70,7 @@ export const Home = () => {
                   title={card.title}
                   value={card.value}
                   icon={card.icon}
-                  isLoading={isLoading}
+                  isLoading={accountBalance !== undefined ? false : true}
                   trend={card.trend as "up" | "down" | "neutral"} // Pass trend to OverviewCard
                 />
               ))}
