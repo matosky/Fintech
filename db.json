@@ -10,6 +10,14 @@
       "totalSpending": 156,
       "recentTransactions": [
         {
+          "id": "1736078255554",
+          "userId": 1,
+          "date": "2025-01-05T11:57:35.554Z",
+          "amount": 8000,
+          "type": "debit",
+          "description": "Loan Request: Home Renovation"
+        },
+        {
           "id": "1736075857141",
           "userId": 1,
           "date": "2025-01-05T11:17:37.141Z",
@@ -40,14 +48,6 @@
           "amount": 60000,
           "type": "debit",
           "description": "Loan Request: Personal"
-        },
-        {
-          "id": "1736075279882",
-          "userId": 1,
-          "date": "2025-01-05T11:07:59.882Z",
-          "amount": 6000,
-          "type": "debit",
-          "description": "Loan Request: Education"
         }
       ]
     },
@@ -206,6 +206,14 @@
       "userId": 1,
       "date": "2025-01-05T11:10:45.629Z",
       "amount": 60000,
+      "type": "debit",
+      "description": "Loan Request: Home Renovation"
+    },
+    {
+      "id": "1736078255554",
+      "userId": 1,
+      "date": "2025-01-05T11:57:35.554Z",
+      "amount": 8000,
       "type": "debit",
       "description": "Loan Request: Home Renovation"
     }
@@ -370,6 +378,16 @@
       "status": "pending",
       "startDate": "2025-01-05T11:17:37.141Z",
       "endDate": "2026-01-05T11:17:37.141Z"
+    },
+    {
+      "id": "2ea1",
+      "userId": 1,
+      "loanAmount": 8000,
+      "tenure": 12,
+      "purpose": "Home Renovation",
+      "status": "pending",
+      "startDate": "2025-01-05T11:57:35.554Z",
+      "endDate": "2026-01-05T11:57:35.554Z"
     }
   ]
 }

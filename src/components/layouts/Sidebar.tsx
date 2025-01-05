@@ -6,6 +6,7 @@ import {
   CreditCard,
   Settings,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { icon: Home, label: "Dashboard", href: "/" },
@@ -55,14 +56,14 @@ export const Sidebar = ({
       </div>
       <nav className="mt-5 px-2">
         {navItems.map((item) => (
-          <a
+          <Link
             key={item.href}
-            href={item.href}
+            to={item.href}
             className="flex items-center px-2 py-2 mt-1 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-gray-900"
           >
             <item.icon className="mr-3 h-6 w-6" />
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
     </div>
