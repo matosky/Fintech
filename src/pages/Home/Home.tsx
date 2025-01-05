@@ -13,38 +13,39 @@ export const Home = () => {
   const { state } = useMainContext();
   const { newLoan, errors, loading, handleInputChange, handleSubmit } =
     useLoanRequest();
-  const { recentTransactions } = state?.user;
+  const { recentTransactions, name, accountBalance, creditScore, availableCredit } = state?.user;
 
   const overviewCards = [
     {
       title: "Account Balance",
-      value: `$${userData?.accountBalance?.toFixed(2) || "0.00"}`,
+      value: `$${(Number(accountBalance) || 0).toFixed(2)}`,
       icon: DollarSign,
-      trend: userData?.accountBalance !== undefined && userData.accountBalance > 0 ? "up" : "down",
+      trend: userData?.accountBalance && Number(userData.accountBalance) > 0 ? "up" : "down",
     },
     {
       title: "Credit Score",
-      value: userData?.creditScore ?? "N/A", // Provide a fallback for creditScore
+      value: userData?.creditScore ?? "N/A",
       icon: TrendingUp,
-      trend: userData?.creditScore !== undefined && userData.creditScore > 700 ? "up" : "down",
+      trend: userData?.creditScore && Number(creditScore) > 700 ? "up" : "down",
     },
     {
       title: "Available Credit",
-      value: `$${userData?.availableCredit?.toFixed(2) || "0.00"}`,
+      value: `$${(Number(availableCredit) || 0).toFixed(2)}`,
       icon: CreditCard,
-      trend: "neutral", // Fixed trend for Available Credit
+      trend: "neutral",
     },
     {
       title: "Total Spending",
       value: `$${
-        userData?.recentTransactions
+        recentTransactions
           ?.reduce((sum, t) => (t.type === "debit" ? sum + t.amount : sum), 0)
           ?.toFixed(2) || "0.00"
       }`,
       icon: CreditCard,
-      trend: "neutral", // Fixed trend for Total Spending
+      trend: "neutral",
     },
   ];
+  
   
 
   return (
@@ -52,7 +53,7 @@ export const Home = () => {
       <div className="bg-white h-full rounded-lg shadow-lg overflow-auto">
         <div className="p-6 text-black">
           <h2 className="text-2xl font-semibold mb-2 text-left">
-            Welcome back, {userData ? userData.name : "User"}
+            Welcome back, {name ? name : "User"}
           </h2>
           <p className="text-black-100 text-left">
             {userData

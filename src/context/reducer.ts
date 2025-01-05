@@ -13,8 +13,10 @@ export type ActionProps = {
 
 export const initialState: StateProps = {
   user: {
-    name: "John Doe",
+    name: "",
     accountBalance: 5000,
+    creditScore: 0,
+    availableCredit: 0,
     recentTransactions: [],
     loans: [],
   },
