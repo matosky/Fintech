@@ -1,6 +1,6 @@
 models:
   User:
-    hasMany: [Comment]
+    hasMany: [RecentTransaction]
     fake:
       _count: 10
       cover: { imageURL: [1920, 1080] }
@@ -10,10 +10,22 @@ models:
       isDraft: { bool: 20 }
       views: { int: [0, 1000] }
       createdAt: { dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z] }
-  Comment:
+  RecentTransaction:
     belongsTo: [User]
     fake:
       _count: 25
+      email: email
+      body: { loremParagraphs: [10, 100] }
+      createdAt: { dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z] }
+  Transaction:
+    fake:
+      _count: 10
+      email: email
+      body: { loremParagraphs: [10, 100] }
+      createdAt: { dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z] }
+  Loan:
+    fake:
+      _count: 10
       email: email
       body: { loremParagraphs: [10, 100] }
       createdAt: { dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z] }
