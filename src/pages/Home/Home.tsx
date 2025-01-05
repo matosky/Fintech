@@ -15,33 +15,37 @@ export const Home = () => {
     useLoanRequest();
   const { recentTransactions } = state?.user;
 
-  // Overview Cards data
   const overviewCards = [
     {
       title: "Account Balance",
-      value: `$0.00`,
+      value: `$${userData?.accountBalance?.toFixed(2) || "0.00"}`,
       icon: DollarSign,
-      trend: "neutral",
+      trend: userData?.accountBalance !== undefined && userData.accountBalance > 0 ? "up" : "down",
     },
     {
       title: "Credit Score",
-      value: "N/A",
+      value: userData?.creditScore ?? "N/A", // Provide a fallback for creditScore
       icon: TrendingUp,
-      trend: "neutral",
+      trend: userData?.creditScore !== undefined && userData.creditScore > 700 ? "up" : "down",
     },
     {
       title: "Available Credit",
-      value: `$0.00`,
+      value: `$${userData?.availableCredit?.toFixed(2) || "0.00"}`,
       icon: CreditCard,
-      trend: "neutral",
+      trend: "neutral", // Fixed trend for Available Credit
     },
     {
       title: "Total Spending",
-      value: `$0.00`,
+      value: `$${
+        userData?.recentTransactions
+          ?.reduce((sum, t) => (t.type === "debit" ? sum + t.amount : sum), 0)
+          ?.toFixed(2) || "0.00"
+      }`,
       icon: CreditCard,
-      trend: "neutral",
+      trend: "neutral", // Fixed trend for Total Spending
     },
   ];
+  
 
   return (
     <DashboardLayout>
@@ -51,37 +55,38 @@ export const Home = () => {
             Welcome back, {userData ? userData.name : "User"}
           </h2>
           <p className="text-black-100 text-left">
-            {userData ? "Here's your financial overview" : "No user data available."}
+            {userData
+              ? "Here's your financial overview"
+              : "No user data available."}
           </p>
         </div>
         <div className="p-6">
-            <>
-              <div className="flex overflow-x-scroll space-x-4 mb-6">
-                {overviewCards.map((card, index) => (
-                  <OverviewCard
-                    key={index}
-                    title={card.title}
-                    value={card.value}
-                    icon={card.icon}
-                    isLoading={isLoading}
-                    trend={card.trend as "up" | "down" | "neutral"} // Pass trend to OverviewCard
-                  />
-                ))}
-              </div>
-              <div className="grid gap-6 lg:grid-cols-2">
-                <RequestLoanForm
-                  newLoan={newLoan}
-                  errors={errors}
-                  isLoading={loading}
-                  handleInputChange={handleInputChange}
-                  handleSubmit={handleSubmit}
+          <>
+            <div className="flex overflow-x-scroll space-x-4 mb-6">
+              {overviewCards.map((card, index) => (
+                <OverviewCard
+                  key={index}
+                  title={card.title}
+                  value={card.value}
+                  icon={card.icon}
+                  isLoading={isLoading}
+                  trend={card.trend as "up" | "down" | "neutral"} // Pass trend to OverviewCard
                 />
-                <RecentTransactions
-                  recentTransactions={recentTransactions || []}
-                />
-              </div>
-            </>
-
+              ))}
+            </div>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <RequestLoanForm
+                newLoan={newLoan}
+                errors={errors}
+                isLoading={loading}
+                handleInputChange={handleInputChange}
+                handleSubmit={handleSubmit}
+              />
+              <RecentTransactions
+                recentTransactions={recentTransactions || []}
+              />
+            </div>
+          </>
         </div>
       </div>
     </DashboardLayout>
