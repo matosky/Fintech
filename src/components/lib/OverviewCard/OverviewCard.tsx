@@ -6,10 +6,12 @@ export const Loader = () => (
 export const OverviewCard = ({
     title,
     value,
+    isLoading,
     icon: Icon,
     trend,
   }: {
     title: string;
+    isLoading: boolean;
     value: string | number | null | undefined;
     icon: React.ElementType;
     trend?: "up" | "down" | "neutral";
@@ -25,7 +27,7 @@ export const OverviewCard = ({
         </div>
         <p className="text-sm text-gray-500 text-left">{title}</p>
         <div className="flex items-center justify-left">
-          {value === undefined || value === null ? (
+          {isLoading ? (
             <Loader />
           ) : (
             <p className="text-2xl font-semibold text-left">{value}</p>
