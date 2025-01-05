@@ -72,7 +72,7 @@ export const useLoanRequest = () => {
         await requestNewLoan(1, loanPayload);
 
         // Create the transaction and update recent transactions
-        await createTransactionAndUpdateRecent(1, transactionPayload);
+        // await createTransactionAndUpdateRecent(1, transactionPayload);
 
         // Dispatch actions to update the context state with the new loan and transaction
         dispatch({ type: "ADD_LOAN", payload: loanPayload }); // Add loan to state
