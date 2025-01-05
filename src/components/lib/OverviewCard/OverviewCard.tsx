@@ -15,7 +15,7 @@ export const OverviewCard = ({
     trend?: "up" | "down" | "neutral";
   }) => {
     return (
-      <div className="bg-white border p-4 rounded-lg shadow"> 
+      <div className="bg-white border  flex-shrink-0 w-64 p-4 rounded-lg shadow"> 
         <div className="flex justify-between items-center mb-2">
           <Icon className="h-6 w-6 text-blue-500" />
           {trend === "up" && <ArrowUpRight className="h-4 w-4 text-green-500" />}

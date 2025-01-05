@@ -82,7 +82,6 @@ export const Home = () => {
         <div className="p-6">
           <div className="flex overflow-x-scroll space-x-4 mb-6">
             {overviewCards.map((card, index) => (
-              <div className="flex-shrink-0 w-64">
                 <OverviewCard
                   key={index}
                   title={card.title}
@@ -90,7 +89,6 @@ export const Home = () => {
                   icon={card.icon}
                   trend={card.trend as "up" | "down" | "neutral"} // Pass trend to OverviewCard
                 />
-              </div>
             ))}
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
