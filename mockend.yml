@@ -15,7 +15,8 @@ models:
     fake:
       _count: 5  # Number of transactions to generate per user
       id: { string: true }
-      userId: reference: User
+      userId: 
+        reference: User
       date: dateTime
       amount: { float: [10, 50000] }
       type: { oneOf: ["debit", "credit"] }
@@ -25,7 +26,8 @@ models:
     fake:
       _count: 10  # Number of transactions to generate
       id: { string: true }
-      userId: reference: User
+      userId: 
+        reference: User
       date: dateTime
       amount: { float: [10, 50000] }
       type: { oneOf: ["debit", "credit"] }
@@ -35,7 +37,8 @@ models:
     fake:
       _count: 3  # Number of loans to generate
       id: { string: true }
-      userId: reference: User
+      userId: 
+        reference: User
       loanAmount: { float: [1000, 1000000] }
       tenure: { int: [12, 60] }
       purpose: { oneOf: ["Car Loan", "Home Renovation", "Business", "Education", "Personal"] }
