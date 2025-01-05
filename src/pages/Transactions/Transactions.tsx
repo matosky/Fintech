@@ -43,13 +43,6 @@ export const Transactions = () => {
       }
     });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error fetching transaction data</div>; // Handle error state
-  }
 
   return (
     <DashboardLayout>
