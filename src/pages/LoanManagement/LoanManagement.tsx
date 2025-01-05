@@ -9,7 +9,7 @@ import DashboardLayout from "../../components/layouts/DashboardLayout";
 
 export const LoanManagement = () => {
   const userId = 1; // Replace with the actual user ID
-  const { loanData, isLoading, error } = useUserData(userId);
+  const { loanData, isLoading} = useUserData(userId);
   const {
     newLoan,
     errors,
