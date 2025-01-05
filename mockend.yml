@@ -1,47 +1,19 @@
 models:
-  Users:
-    hasMany: [RecentTransactions, Loans, Transactions]
+  Post:
+    hasMany: [Comment]
     fake:
       _count: 10
-      id: uuid                                # Generate unique user IDs
-      name: { fullName: true }                # Generate realistic full names
-      email: email                            # Generate random email addresses
-      accountBalance: { float: [0, 10000, 2] }# Random balance with two decimal places
-      creditScore: { int: [300, 850] }        # Random credit score (FICO range)
-      availableCredit: { int: [0, 100000] }   # Random available credit
-      totalSpending: { float: [0, 1000, 2] }  # Random spending total
-
-  RecentTransactions:
-    belongsTo: [Users]
-    fake:
-      _count: 50
-      id: uuid                                # Unique transaction ID
-      userId: ref:Users.id                    # Reference user ID
-      date: dateTime                          # Random transaction date
-      amount: { float: [1, 100000, 2] }       # Random transaction amount
-      type: { oneOfString: [debit, credit] }  # Transaction type
-      description: { loremWords: [5, 15] }    # Short transaction description
-
-  Loans:
-    belongsTo: [Users]
+      cover: { imageURL: [1920, 1080] }
+      title: { loremWords: [5, 20] }
+      body: { loremParagraphs: [10, 100] }
+      category: { oneOfString: [one, two, three] }
+      isDraft: { bool: 20 }
+      views: { int: [0, 1000] }
+      createdAt: { dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z] }
+  Comment:
+    belongsTo: [Post]
     fake:
       _count: 25
-      id: uuid                                # Unique loan ID
-      userId: ref:Users.id                    # Reference user ID
-      loanAmount: { float: [1000, 100000, 2] }# Loan amount
-      tenure: { int: [6, 60] }                # Tenure in months
-      purpose: { oneOfString: [Personal, Business, Education, Home Renovation, Car Loan] }
-      status: { oneOfString: [active, paid, pending] }
-      startDate: dateTime                     # Loan start date
-      endDate: dateTime                       # Loan end date
-
-  Transactions:
-    belongsTo: [Users]
-    fake:
-      _count: 100                             # Generate 100 fake transactions
-      id: uuid                                # Unique transaction ID
-      userId: ref:Users.id                    # Reference to Users table
-      date: dateTime                          # Random transaction date and time
-      amount: { float: [1, 100000, 2] }       # Random transaction amount with two decimal places
-      type: { oneOfString: [debit, credit] }  # Transaction type
-      description: { loremWords: [5, 15] }    # Short transaction description
+      email: email
+      body: { loremParagraphs: [10, 100] }
+      createdAt: { dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z] }
