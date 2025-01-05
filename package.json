@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.3.5",
     "axios": "^1.7.9",
     "lucide-react": "^0.469.0",
+    "miragejs": "^0.1.48",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^5.4.0",
