@@ -1,5 +1,5 @@
 models:
-  Post:
+  User:
     hasMany: [Comment]
     fake:
       _count: 10
